@@ -1,37 +1,76 @@
-var name = 'Voyager I';
-  int year = 1997;
-  var antennaDiameter = 3.7;
-  var flyByObject = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
-  var image = {
-    'tags' : ['Saturn'],
-    'url' : 'https://specials-images.forbesimg.com/imageserve/5f083e8dd6aee1000672717a/960x0.jpg?cropX1=357&cropX2=1800&cropY1=376&cropY2=1053'
-  };
-  
-  if(year >= 2001){
-    print('21st century');
-}else if(year >= 1901){
-  print('20th century');
+import 'package:flutter/material.dart';
+
+class MyAppBar extends StatelessWidget {
+  MyAppBar({this.title});
+
+  // Fields in a Widget subclass are always marked "final".
+
+  final Widget title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 56.0, // in logical pixels
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(color: Colors.custom_blue),
+      // Row is a horizontal, linear layout.
+      child: Row(
+        // <Widget> is the type of items in the list.
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu, color: Colors.white),
+            tooltip: 'Navigation menu',
+            onPressed: null, // null disables the button
+          ),
+          // Expanded expands its child to fill the available space.
+          Expanded(
+            child: title,
+          ),
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.white),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
+      ),
+    );
   }
-  for(var object in flyByObject) {
-    print(object);
+}
+
+class MyScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Material is a conceptual piece of paper on which the UI appears.
+    return Material(
+      // Column is a vertical, linear layout.
+      child: Column(
+        children: <Widget>[
+          MyAppBar(
+            title: Text(
+              'Sigmind.ai',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white.withOpacity(0.6)),
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Text('Hello, world!'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
-  for(int month = 1; month <= 12; month++) {
-    print(month);
-  }
-  while (year < 2016) {
-    year += 1;
- }
- int fibonacci(int n) {
-    if(n == 0 || n == 1) {
-      return n;
-    }
-    return fibonacci(n -1) + fibonacci(n -2);
-  }
-  var result = fibonacci(20);
-  print(result);
-  
-  
-  var name = 'Voyager I';
-  var flyByObject = ['Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Uturn', 'Hashturn'];
-  flyByObject.where((name) => name.contains('turn')
-                   ).forEach(print);
+}
+
+void main() {
+  runApp(MaterialApp(
+    title: 'WatchCam', // used by the OS task switcher
+    home: SafeArea(
+      child: MyScaffold(),
+    ),
+  ));
+}
