@@ -1,0 +1,38 @@
+//Flutter App
+*****Push Notification******
+-->Go to firebase.
+-->Create New project
+-->Create android app
+-->android-->app-->build.gradle-->defaultConfig-->copy(applicationId) to 
+     --->Firebase Register app--->android package name
+     --->app nickname(optional)
+     --->SHA-1--->see this page
+	--->copy(go to the debug certificate fingerprint) to terminal then copy SHA-1 to firebase
+***copy(google-services.json) file to -->android-->app folder
+
+Add firebase to flutter app
+
+**project-level build.gradle
+	dependencies {
+		classpath '****"
+	}
+	allprojects{
+		repositories{
+			google()
+		}
+	}
+**App level build.gradle
+-->android-->app-->build.gradle
+	apply plugin:
+	dependencies{
+	}
+***Add dependecy plugin to pubspec.yaml
+	dependencies:
+  		firebase_messaging: ^6.0.9
+
+***Open android-->src-->main-->androidManifest.xml
+and add -->
+	    <intent-filter>
+	        <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
