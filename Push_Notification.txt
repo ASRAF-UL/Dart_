@@ -36,3 +36,4 @@ and add -->
 	        <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+	    https://github.com/modularcode/modular-admin-react-pro/tree/master/src
